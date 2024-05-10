@@ -2,10 +2,12 @@ import express from "express";
 import {isAdmin, isAuth, isEmployee} from "../utils.js";
 import expressAsyncHandler from "express-async-handler";
 import Animal from "../models/animalModel.js";
+import User from "../models/userModel.js";
 
 const animalRouter = express.Router();
 
 const PAGE_SIZE = 10;
+
 
 animalRouter.get(
     '/',
@@ -46,6 +48,7 @@ animalRouter.post(
     })
 );
 
+
 animalRouter.get(
     '/mine',
     isAuth,
@@ -54,6 +57,7 @@ animalRouter.get(
         res.send(animals);
     })
 );
+
 
 animalRouter.get(
     '/owner/:id',
@@ -65,6 +69,47 @@ animalRouter.get(
         res.send(animals);
     })
 );
+
+animalRouter.get(
+    '/summary',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const animals = await Animal.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    numAnimals: { $sum: 1 },
+                },
+            },
+        ]);
+
+        const users = await User.aggregate([
+            {
+                $group: {
+                    _id: { $cond: { if: "$isEmployee", then: "Employee", else: "Regular User" } },
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+
+        const userCounts = {
+            regularUsers: 0,
+            employees: 0
+        };
+
+        users.forEach(userGroup => {
+            if (userGroup._id === "Regular User") {
+                userCounts.regularUsers = userGroup.count;
+            } else if (userGroup._id === "Employee") {
+                userCounts.employees = userGroup.count;
+            }
+        });
+
+        res.send({ userCounts, animals });
+    })
+);
+
 
 animalRouter.get(
     '/:id',
@@ -115,6 +160,5 @@ animalRouter.put(
         }
     })
 );
-
 
 export default animalRouter;

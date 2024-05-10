@@ -57,7 +57,7 @@ function App() {
                                       <NavDropdown.Item>Állatok</NavDropdown.Item>
                                   </LinkContainer>
                                   <LinkContainer to={"/employee/orderList"}>
-                                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                                      <NavDropdown.Item>Számlák</NavDropdown.Item>
                                   </LinkContainer>
                               </NavDropdown>
                           </Col>
