@@ -106,7 +106,7 @@ export default function AddAnimalScreen(){
                                 <option value="" hidden>Válassz...</option>
                                 <option value={"Kutya"}>Kutya</option>
                                 <option value={"Macska"}>Macska</option>
-                                <option value={"Nyúl"}>Nyúl</option>
+                                <option value={"Kisrágcsáló"}>Kisrágcsáló</option>
                             </Form.Select>
                         </Form.Group>
                     </Col>

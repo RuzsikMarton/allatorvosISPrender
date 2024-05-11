@@ -45,7 +45,7 @@ code {
 
 .dropdown-toggle{
   font-size: 1.15rem;
-  margin-left: 5rem;
+  margin-right: 2rem;
   padding-left: 1rem;
   padding-right: 2rem;
   width: auto;
@@ -197,4 +197,14 @@ code {
   color: #222222;
   background-color: darkgrey;
   border-color: darkgrey;
+}
+
+.link-style {
+  color: #6585d3;
+  text-decoration: none;
+}
+
+.link-style:hover {
+  color: #4c6597;
+  text-decoration: underline;
 }

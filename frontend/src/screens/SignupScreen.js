@@ -53,7 +53,7 @@ export default function SignupScreen() {
             <Helmet>
                 <title>Regisztráció</title>
             </Helmet>
-            <Card className={" mt-3 ps-3 pe-3"}>
+            <Card className={" my-3 ps-3 pe-3"}>
             <h1 className="my-3">Regisztráció</h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group className="mb-3" controlId="name">
@@ -108,7 +108,7 @@ export default function SignupScreen() {
                 </div>
                 <div className="mb-3">
                     Már van fiókod?{' '}
-                    <Link to={'/signin'}>Jelentkezz be.</Link>
+                    <Link to={'/signin'} className={"link-style"}>Jelentkezz be.</Link>
                 </div>
             </Form>
             </Card>

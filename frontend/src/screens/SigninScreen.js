@@ -57,7 +57,7 @@ function SigninScreen(){
                         <Button type="submit">Bejelentkezés</Button>
                     </div>
                     <div className={"mb-3"}>
-                        Új felhasználó?{' '} <Link to={`/signup`}>Regisztrálj itt</Link>
+                        Új felhasználó?{' '} <Link to={`/signup`} className={"link-style"}>Regisztrálj itt</Link>
                     </div>
                 </Form>
             </Card>

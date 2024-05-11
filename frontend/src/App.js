@@ -52,7 +52,7 @@ function App() {
                       </Col>
                       {userInfo && userInfo.isEmployee && !userInfo.isAdmin && (
                           <Col md={1}>
-                              <NavDropdown title={"Alkalmazott"} id={"admin-nav-dropdonw"}>
+                              <NavDropdown title={"Alkalmazott"} id={"admin-nav-dropdown"}>
                                   <LinkContainer to={"/employee/animalList"}>
                                       <NavDropdown.Item>Állatok</NavDropdown.Item>
                                   </LinkContainer>
@@ -64,7 +64,7 @@ function App() {
                       )}
                       {userInfo && userInfo.isAdmin && (
                           <Col md={1}>
-                              <NavDropdown title={"Admin"} id={"admin-nav-dropdonw"}>
+                              <NavDropdown title={"Admin"} id={"admin-nav-dropdown"}>
                                   <LinkContainer to={"/admin/dashboard"}>
                                       <NavDropdown.Item>Dashboard</NavDropdown.Item>
                                   </LinkContainer>
@@ -97,10 +97,13 @@ function App() {
                                   </NavDropdown>
                               </Col>
                       ) : (
-                          <Col md={2}>
+                          <>
+                              <Col md={1}></Col>
+                          <Col md={1}>
                               <LinkContainer to={"/signin"}><Button variant={"primary"}>Bejelentkezés</Button></LinkContainer> {' '}
-                              <LinkContainer to={"/signup"}><Button variant={"primary"}>Regisztráció</Button></LinkContainer>
                           </Col>
+                              <Col md={1}></Col>
+                          </>
                       )}
                   </Navbar>
               </header>
